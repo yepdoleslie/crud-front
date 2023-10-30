@@ -1,0 +1,14 @@
+# Utilisez une image Node.js officielle comme base
+FROM node:14
+# Définissez le répertoire de travail dans le conteneur
+WORKDIR /app
+# Copiez les fichiers de votre projet dans le conteneur
+COPY . .
+# Installez les dépendances (assurez-vous que votre projet contient un package.json)
+RUN npm install
+# Build de l'application
+RUN npm run build
+# Exposez le port sur lequel l'application s'exécutera (par exemple, 3000)
+EXPOSE 3000
+# Commande pour exécuter l'application lorsque le conteneur démarre
+CMD [ "npm", "start" ]
